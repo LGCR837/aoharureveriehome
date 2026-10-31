@@ -427,6 +427,10 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal[data-delay="4"] { --friend-delay: 410ms; }
 .js .friend-item.reveal[data-delay="5"] { --friend-delay: 520ms; }
 .js .friend-item.reveal[data-delay="6"] { --friend-delay: 630ms; }
+.js .friend-item.reveal[data-delay="7"] { --friend-delay: 740ms; }
+.js .friend-item.reveal[data-delay="8"] { --friend-delay: 850ms; }
+.js .friend-item.reveal[data-delay="9"] { --friend-delay: 960ms; }
+.js .friend-item.reveal[data-delay="10"] { --friend-delay: 1070ms; }
 .js .friend-item.reveal.is-visible {
   transform: translateX(0);
   animation: friend-row-in 900ms var(--ease-out) var(--friend-delay) both;
