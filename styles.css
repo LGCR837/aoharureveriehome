@@ -413,11 +413,9 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .friend-item:hover > span:nth-child(3) { color: var(--ink); }
 .friend-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal {
-  clip-path: inset(0 100% 0 0);
   transition:
     opacity 650ms var(--ease-out) var(--friend-delay, 0ms),
     transform 900ms var(--ease-out) var(--friend-delay, 0ms),
-    clip-path 1000ms var(--ease-out) var(--friend-delay, 0ms),
     padding 360ms var(--ease-out) 0ms,
     background 280ms var(--ease-standard) 0ms,
     border-color 280ms var(--ease-standard) 0ms;
@@ -427,7 +425,14 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal[data-delay="2"] { --friend-delay: 190ms; }
 .js .friend-item.reveal[data-delay="3"] { --friend-delay: 300ms; }
 .js .friend-item.reveal[data-delay="4"] { --friend-delay: 410ms; }
-.js .friend-item.reveal.is-visible { clip-path: inset(0 0 0 0); transform: translateX(0); }
+.js .friend-item.reveal.is-visible {
+  transform: translateX(0);
+  animation: friend-row-in 900ms var(--ease-out) var(--friend-delay) both;
+}
+@keyframes friend-row-in {
+  from { opacity: 0; transform: translateX(-20px); clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
+}
 
 .site-footer { border-top: 1px solid var(--line); background: rgba(3, 8, 19, 0.96); }
 .site-footer__inner { width: min(100%, var(--content)); min-height: 108px; margin: 0 auto; padding: 26px 48px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; color: var(--faint); font-size: 10px; letter-spacing: 0.1em; }
