@@ -1,0 +1,17 @@
+{
+  "name": "aoharu-reverie-home",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aoharu Reverie personal homepage",
+  "scripts": {
+    "build": "node scripts/build.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "html-minifier-terser": "7.2.0",
+    "javascript-obfuscator": "5.9.0"
+  }
+}

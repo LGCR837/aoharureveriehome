@@ -1,4 +1,6 @@
 .workbuddy/
+node_modules/
+public/
 .DS_Store
 Thumbs.db
 
