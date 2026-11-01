@@ -104,6 +104,73 @@
       </div>
     </section>
 
+    <section class="content-section content-section--status" id="status" aria-labelledby="status-title">
+      <div class="section__inner">
+        <header class="status-heading reveal">
+          <div>
+            <p class="status-heading__eyebrow">LIVE / AT A GLANCE</p>
+            <h2 id="status-title">此刻<span>SOME NUMBERS, RIGHT NOW</span></h2>
+          </div>
+          <p class="status-heading__note">时间、脚步与今天的天气。</p>
+        </header>
+
+        <div class="status-grid">
+          <article class="status-card reveal" data-delay="1">
+            <div class="status-card__top">
+              <span class="status-card__label">中考倒计时</span>
+              <span class="status-card__en">EXAM</span>
+            </div>
+            <div class="status-card__main">
+              <strong id="exam-days">--</strong><span class="status-card__unit">天</span>
+            </div>
+            <p class="status-card__detail" id="exam-clock">-- 时 -- 分 -- 秒</p>
+            <div class="status-card__bottom"><span>2027.06.21 / 08:00</span><span>01</span></div>
+          </article>
+
+          <article class="status-card reveal" data-delay="2">
+            <div class="status-card__top">
+              <span class="status-card__label">站点运行</span>
+              <span class="status-card__en">SITE</span>
+            </div>
+            <div class="status-card__main">
+              <strong id="site-days">--</strong><span class="status-card__unit">天</span>
+            </div>
+            <p class="status-card__detail" id="site-clock">-- 时 -- 分 -- 秒</p>
+            <div class="status-card__bottom"><span>SINCE 2026.10.31</span><span>02</span></div>
+          </article>
+
+          <article class="status-card reveal" data-delay="3">
+            <div class="status-card__top">
+              <span class="status-card__label">访问统计</span>
+              <span class="status-card__en">VISITS</span>
+            </div>
+            <div class="status-card__split">
+              <div><strong id="busuanzi_site_pv">--</strong><span>总访问</span></div>
+              <div><strong id="busuanzi_today_pv">--</strong><span>今日</span></div>
+            </div>
+            <p class="status-card__detail"><span id="busuanzi_site_uv">--</span> 位访客</p>
+            <div class="status-card__bottom"><span>BUSUANZI / LIVE</span><span>03</span></div>
+          </article>
+
+          <article class="status-card reveal" data-delay="4">
+            <div class="status-card__top">
+              <span class="status-card__label">天气</span>
+              <span class="status-card__en">WEATHER</span>
+            </div>
+            <div class="status-card__weather">
+              <strong id="weather-temp">--°</strong>
+              <div>
+                <span class="status-card__city" id="weather-city">正在定位</span>
+                <small id="weather-desc">天气加载中</small>
+              </div>
+            </div>
+            <p class="status-card__detail">体感温度 <span id="weather-feels">--°</span></p>
+            <div class="status-card__bottom"><span>OPEN-METEO / LIVE</span><span>04</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="content-section content-section--projects" id="projects" aria-labelledby="projects-title">
       <div class="section__inner">
         <header class="section-heading reveal">
@@ -257,7 +324,10 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <p>© 2026 Aoharu Reverie</p>
+      <div class="site-footer__brand">
+        <p>© 2026 Aoharu Reverie</p>
+        <a class="site-footer__icp" href="https://icp.gov.moe/?keyword=20262046" target="_blank" rel="noopener noreferrer">萌ICP备20262046号</a>
+      </div>
       <p class="site-footer__domain">aoharu.vc.ci</p>
       <div class="site-footer__links">
         <a href="https://github.com/LGCR837/aoharureveriehome" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>

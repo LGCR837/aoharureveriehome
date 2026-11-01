@@ -123,6 +123,141 @@
     });
   });
 
+  const EXAM_TARGET = new Date("2027-06-21T08:00:00+08:00").getTime();
+  const SITE_START = new Date("2026-10-31T00:00:00+08:00").getTime();
+  const DAY = 86400000;
+  const examDaysElement = document.getElementById("exam-days");
+  const examClockElement = document.getElementById("exam-clock");
+  const siteDaysElement = document.getElementById("site-days");
+  const siteClockElement = document.getElementById("site-clock");
+  let statusInView = true;
+
+  const formatUnit = (value) => String(value).padStart(2, "0");
+
+  const updateClocks = () => {
+    if (document.hidden || !statusInView) return;
+    const now = Date.now();
+
+    if (examDaysElement && examClockElement) {
+      const remaining = Math.max(0, EXAM_TARGET - now);
+      const days = Math.floor(remaining / DAY);
+      const hours = Math.floor((remaining % DAY) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      const seconds = Math.floor((remaining % 60000) / 1000);
+      examDaysElement.textContent = days.toLocaleString("zh-CN");
+      examClockElement.textContent = remaining > 0
+        ? `${formatUnit(hours)} 时 ${formatUnit(minutes)} 分 ${formatUnit(seconds)} 秒`
+        : "考试已开始";
+    }
+
+    if (siteDaysElement && siteClockElement) {
+      const elapsed = Math.max(0, now - SITE_START);
+      const days = Math.floor(elapsed / DAY);
+      const hours = Math.floor((elapsed % DAY) / 3600000);
+      const minutes = Math.floor((elapsed % 3600000) / 60000);
+      const seconds = Math.floor((elapsed % 60000) / 1000);
+      siteDaysElement.textContent = days.toLocaleString("zh-CN");
+      siteClockElement.textContent = `${formatUnit(hours)} 时 ${formatUnit(minutes)} 分 ${formatUnit(seconds)} 秒`;
+    }
+  };
+
+  updateClocks();
+  window.setInterval(updateClocks, 1000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) updateClocks();
+  });
+
+  const statusSection = document.getElementById("status");
+  if (statusSection && "IntersectionObserver" in window) {
+    const statusObserver = new IntersectionObserver((entries) => {
+      statusInView = entries[0]?.isIntersecting ?? true;
+      if (statusInView) updateClocks();
+    }, { threshold: 0 });
+    statusObserver.observe(statusSection);
+  }
+
+  const fetchJson = async (url, options = {}) => {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(url, { ...options, signal: controller.signal });
+      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      return await response.json();
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  };
+
+  const setText = (id, value) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = value;
+  };
+
+  const loadVisitStats = async () => {
+    try {
+      const data = await fetchJson("https://api.tssl.cc/api.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: window.location.href.split("#")[0],
+          referrer: document.referrer
+        }),
+        keepalive: true
+      });
+      if (data.busuanzi_site_pv !== undefined) setText("busuanzi_site_pv", data.busuanzi_site_pv);
+      if (data.busuanzi_today_pv !== undefined) setText("busuanzi_today_pv", data.busuanzi_today_pv);
+      if (data.busuanzi_site_uv !== undefined) setText("busuanzi_site_uv", data.busuanzi_site_uv);
+    } catch {
+      setText("busuanzi_site_pv", "--");
+      setText("busuanzi_today_pv", "--");
+      setText("busuanzi_site_uv", "--");
+    }
+  };
+
+  const weatherLabels = {
+    0: "晴", 1: "大部晴朗", 2: "多云", 3: "阴",
+    45: "有雾", 48: "雾凇",
+    51: "小毛毛雨", 53: "毛毛雨", 55: "强毛毛雨",
+    56: "冻毛毛雨", 57: "强冻毛毛雨",
+    61: "小雨", 63: "中雨", 65: "大雨",
+    66: "冻雨", 67: "强冻雨",
+    71: "小雪", 73: "中雪", 75: "大雪", 77: "米雪",
+    80: "小阵雨", 81: "阵雨", 82: "强阵雨",
+    85: "小阵雪", 86: "强阵雪",
+    95: "雷雨", 96: "雷雨伴冰雹", 99: "强雷暴伴冰雹"
+  };
+
+  const loadWeather = async () => {
+    if (!document.getElementById("weather-temp")) return;
+    try {
+      const location = await fetchJson("https://ipwho.is/");
+      if (!location.success || !Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) {
+        throw new Error("Location unavailable");
+      }
+
+      const latitude = location.latitude.toFixed(4);
+      const longitude = location.longitude.toFixed(4);
+      const weather = await fetchJson(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,weather_code&timezone=auto`
+      );
+      if (!weather.current) throw new Error("Weather unavailable");
+
+      const current = weather.current;
+      setText("weather-temp", `${Math.round(current.temperature_2m)}°`);
+      setText("weather-feels", `${Math.round(current.apparent_temperature)}°`);
+      setText("weather-desc", weatherLabels[current.weather_code] || "天气未知");
+      setText("weather-city", location.city || location.region || location.country || "当前位置");
+    } catch {
+      setText("weather-temp", "--°");
+      setText("weather-feels", "--°");
+      setText("weather-desc", "天气暂不可用");
+      setText("weather-city", "稍后再试");
+    }
+  };
+
+  loadVisitStats();
+  loadWeather();
+
   const video = document.getElementById("background-video");
   const deferredSources = [...video.querySelectorAll("source[data-src]")];
   const hasVideo = deferredSources.some((source) => source.dataset.src.trim() !== "");
