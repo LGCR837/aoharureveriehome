@@ -489,6 +489,7 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal[data-delay="12"] { --friend-delay: 1290ms; }
 .js .friend-item.reveal[data-delay="13"] { --friend-delay: 1400ms; }
 .js .friend-item.reveal[data-delay="14"] { --friend-delay: 1510ms; }
+.js .friend-item.reveal[data-delay="15"] { --friend-delay: 1620ms; }
 .js .friend-item.reveal.is-visible {
   transform: translateX(0);
   animation: friend-row-in 900ms var(--ease-out) var(--friend-delay) both;
