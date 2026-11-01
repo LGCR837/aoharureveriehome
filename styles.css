@@ -431,6 +431,9 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal[data-delay="8"] { --friend-delay: 850ms; }
 .js .friend-item.reveal[data-delay="9"] { --friend-delay: 960ms; }
 .js .friend-item.reveal[data-delay="10"] { --friend-delay: 1070ms; }
+.js .friend-item.reveal[data-delay="11"] { --friend-delay: 1180ms; }
+.js .friend-item.reveal[data-delay="12"] { --friend-delay: 1290ms; }
+.js .friend-item.reveal[data-delay="13"] { --friend-delay: 1400ms; }
 .js .friend-item.reveal.is-visible {
   transform: translateX(0);
   animation: friend-row-in 900ms var(--ease-out) var(--friend-delay) both;
