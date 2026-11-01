@@ -230,7 +230,7 @@
   const loadWeather = async () => {
     if (!document.getElementById("weather-temp")) return;
     try {
-      const location = await fetchJson("https://ipwho.is/");
+      const location = await fetchJson("https://ipwho.is/?lang=zh-CN");
       if (!location.success || !Number.isFinite(location.latitude) || !Number.isFinite(location.longitude)) {
         throw new Error("Location unavailable");
       }
