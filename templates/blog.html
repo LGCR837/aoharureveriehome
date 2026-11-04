@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESCRIPTION}}">
+  <meta name="theme-color" content="#07101f">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <meta property="og:type" content="{{OG_TYPE}}">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="{{PAGE_TITLE}}">
+  <meta property="og:description" content="{{PAGE_DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL_URL}}">
+  <meta property="og:image" content="https://aoharu.vc.ci/assets/hoshino-wallpaper-3840.webp">
+  {{ARTICLE_META}}
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/blog.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="/script.js" defer></script>
+</head>
+<body class="{{BODY_CLASS}}" id="top">
+  <a class="skip-link" href="#main">跳至主要内容</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
+  <div class="site-background" id="site-background" aria-hidden="true">
+    <div class="site-background__drift">
+      <picture class="site-background__picture">
+        <source media="(max-width: 760px)" srcset="/assets/hoshino-wallpaper-1280.webp">
+        <source media="(max-width: 1920px)" srcset="/assets/hoshino-wallpaper-1920.webp">
+        <source media="(max-width: 2560px)" srcset="/assets/hoshino-wallpaper-2560.webp">
+        <img class="site-background__image" src="/assets/hoshino-wallpaper-3840.webp" alt="" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="site-background__shade"></div>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="/" aria-label="Aoharu Reverie，返回首页">
+        <span>AOHARU</span><span>REVERIE</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="/#about"><span class="site-nav__number">01</span><span>关于</span></a>
+        <a href="/#projects"><span class="site-nav__number">02</span><span>项目</span></a>
+        <a href="/blog/" class="is-active" aria-current="page"><span class="site-nav__number">03</span><span>文章</span></a>
+        <a href="/#contact"><span class="site-nav__number">04</span><span>联系</span></a>
+        <a href="/#friends"><span class="site-nav__number">05</span><span>友链</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="blog-main">
+    {{MAIN_CONTENT}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <p>© 2026 Aoharu Reverie</p>
+        <a class="site-footer__icp" href="https://icp.gov.moe/?keyword=20262046" target="_blank" rel="noopener noreferrer">萌ICP备20262046号</a>
+      </div>
+      <p class="site-footer__domain">aoharu.vc.ci</p>
+      <div class="site-footer__links">
+        <a href="https://github.com/LGCR837/aoharureveriehome" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+        <a href="#top">回到顶部 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  {{BLOG_SCRIPT}}
+</body>
+</html>

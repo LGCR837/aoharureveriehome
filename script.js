@@ -259,6 +259,8 @@
   loadWeather();
 
   const video = document.getElementById("background-video");
+  if (!video) return;
+
   const deferredSources = [...video.querySelectorAll("source[data-src]")];
   const hasVideo = deferredSources.some((source) => source.dataset.src.trim() !== "");
 
