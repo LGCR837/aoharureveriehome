@@ -405,6 +405,7 @@ main, .site-footer { position: relative; z-index: 1; }
 .js .articles-heading .section-heading__line { transform: scaleX(0); transition: transform 1100ms 260ms var(--ease-out); }
 .js .articles-heading.is-visible .section-heading__line { transform: scaleX(1); }
 .recent-posts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.recent-posts > .article-preview:only-child { grid-column: 1 / -1; }
 .recent-posts__empty { grid-column: 1 / -1; padding: 42px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--faint); font-size: 13px; }
 .article-preview {
   position: relative;
