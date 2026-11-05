@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 72px 56px 82px;
   border: 1px solid var(--line);
-  background: rgba(5, 12, 27, 0.9);
+  background: rgba(5, 12, 27, 0.64);
 }
 .blog-kicker {
   display: flex;
@@ -153,9 +153,17 @@
   position: sticky;
   top: 104px;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   font-size: 11px;
 }
-.rail-section + .rail-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.rail-section {
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  background: rgba(10, 22, 43, 0.72);
+  box-shadow: 0 12px 30px rgba(0, 3, 10, 0.16);
+}
 .rail-label {
   margin-bottom: 14px;
   color: var(--faint);
