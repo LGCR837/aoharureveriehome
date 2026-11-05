@@ -437,11 +437,12 @@ async function copyReferencedAssets(sources) {
 }
 
 async function build() {
-  const [homeTemplate, blogTemplate, cssSource, blogCssSource, jsSource, blogJsSource] = await Promise.all([
+  const [homeTemplate, blogTemplate, cssSource, blogCssSource, fileCssSource, jsSource, blogJsSource] = await Promise.all([
     read("index.html"),
     read("templates/blog.html"),
     read("styles.css"),
     read("blog.css"),
+    read("file.css"),
     read("script.js"),
     read("blog.js")
   ]);
@@ -508,10 +509,11 @@ async function build() {
     pages.push({ file: `blog/${post.slug}/index.html`, html: postHtml });
   }
 
-  const [minifiedPages, css, blogCss, js, blogJs] = await Promise.all([
+  const [minifiedPages, css, blogCss, fileCss, js, blogJs] = await Promise.all([
     Promise.all(pages.map(async (page) => ({ ...page, html: await minifyHtml(page.html) }))),
     bundleCss(cssSource),
     bundleCss(blogCssSource),
+    bundleCss(fileCssSource),
     bundleJavaScript(jsSource),
     bundleJavaScript(blogJsSource)
   ]);
@@ -528,6 +530,7 @@ async function build() {
   await Promise.all([
     fs.writeFile(path.join(outputDirectory, "styles.css"), css),
     fs.writeFile(path.join(outputDirectory, "blog.css"), blogCss),
+    fs.writeFile(path.join(outputDirectory, "file.css"), fileCss),
     fs.writeFile(path.join(outputDirectory, "script.js"), js),
     fs.writeFile(path.join(outputDirectory, "blog.js"), blogJs)
   ]);
@@ -535,14 +538,15 @@ async function build() {
   const assetCount = await copyReferencedAssets([
     ...pages.map((page) => page.html),
     cssSource,
-    blogCssSource
+    blogCssSource,
+    fileCssSource
   ]);
   const totalHtmlSize = minifiedPages.reduce((total, page) => total + Buffer.byteLength(page.html), 0);
 
   console.log(`[build] posts ${posts.length}`);
   console.log(`[build] pages ${minifiedPages.length}`);
   console.log(`[build] HTML  ${(totalHtmlSize / 1024).toFixed(1)} KB`);
-  console.log(`[build] CSS   ${formatSize(css)} + blog ${formatSize(blogCss)}`);
+  console.log(`[build] CSS   ${formatSize(css)} + blog ${formatSize(blogCss)} + file ${formatSize(fileCss)}`);
   console.log(`[build] JS    ${formatSize(js)} + blog ${formatSize(blogJs)}`);
   console.log(`[build] assets ${assetCount} files`);
   console.log(`[build] output ${path.relative(root, outputDirectory)}/`);
