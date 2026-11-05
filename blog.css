@@ -191,6 +191,7 @@
 .rail-posts a span { display: block; margin-top: 3px; }
 .rail-posts a:hover { color: var(--pink-soft); }
 
+.post-core { min-width: 0; }
 .post-content { min-width: 0; }
 .mobile-toc { display: none; }
 .post-body {
@@ -512,6 +513,22 @@
   .post-footer { display: block; margin-top: 48px; }
   .post-footer__back { display: inline-block; margin-top: 22px; }
   .mobile-toc { margin-bottom: 30px; }
+}
+
+@media (min-width: 1025px) {
+  .blog-post .blog-shell {
+    border-color: transparent;
+    background: transparent;
+  }
+  .post-core {
+    padding: 34px 30px 44px;
+    border: 1px solid var(--line);
+    background: rgba(5, 12, 27, 0.64);
+  }
+  .post-header {
+    max-width: none;
+    margin: 0 0 58px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

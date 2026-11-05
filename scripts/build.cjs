@@ -280,18 +280,6 @@ function renderPostPage(post, posts) {
 
   return `
     <div class="blog-shell blog-post">
-      <header class="post-header reveal">
-        <a class="post-header__back" href="/blog/">← 返回文章列表</a>
-        <p class="blog-kicker"><span class="square-mark"></span> WRITING / ${displayDate(post.date)}</p>
-        <h1>${escapeHtml(post.title)}</h1>
-        <p class="post-header__summary">${escapeHtml(post.summary)}</p>
-        <div class="post-header__meta">
-          <time datetime="${isoDate(post.date)}">${displayDate(post.date)}</time>
-          <span>约 ${post.readingMinutes} 分钟阅读</span>
-          <span>${post.wordCount} 字</span>
-        </div>
-      </header>
-
       <div class="post-layout">
         <aside class="post-rail post-rail--left reveal" data-delay="1">
           <section class="rail-section">
@@ -309,20 +297,34 @@ function renderPostPage(post, posts) {
           </section>
         </aside>
 
-        <article class="post-content">
-          <details class="mobile-toc">
-            <summary>文章目录 <span>${post.headings.length} 节</span></summary>
-            ${toc}
-          </details>
-          <div class="post-body">${post.html}</div>
-          <footer class="post-footer">
-            <div>
-              <p class="rail-label">TAGS / 标签</p>
-              ${articleTags || '<p class="post-footer__muted">无标签</p>'}
+        <div class="post-core">
+          <header class="post-header reveal">
+            <a class="post-header__back" href="/blog/">← 返回文章列表</a>
+            <p class="blog-kicker"><span class="square-mark"></span> WRITING / ${displayDate(post.date)}</p>
+            <h1>${escapeHtml(post.title)}</h1>
+            <p class="post-header__summary">${escapeHtml(post.summary)}</p>
+            <div class="post-header__meta">
+              <time datetime="${isoDate(post.date)}">${displayDate(post.date)}</time>
+              <span>约 ${post.readingMinutes} 分钟阅读</span>
+              <span>${post.wordCount} 字</span>
             </div>
-            <a class="post-footer__back" href="/blog/">继续阅读 <span aria-hidden="true">↗</span></a>
-          </footer>
-        </article>
+          </header>
+
+          <article class="post-content">
+            <details class="mobile-toc">
+              <summary>文章目录 <span>${post.headings.length} 节</span></summary>
+              ${toc}
+            </details>
+            <div class="post-body">${post.html}</div>
+            <footer class="post-footer">
+              <div>
+                <p class="rail-label">TAGS / 标签</p>
+                ${articleTags || '<p class="post-footer__muted">无标签</p>'}
+              </div>
+              <a class="post-footer__back" href="/blog/">继续阅读 <span aria-hidden="true">↗</span></a>
+            </footer>
+          </article>
+        </div>
 
         <aside class="post-rail post-rail--right reveal" data-delay="2">
           <section class="rail-section toc-section">
