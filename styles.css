@@ -517,32 +517,33 @@ a.contact-item:hover i { transform: translate(4px, -4px); }
 .friend-item:hover i { transform: translate(4px, -4px); }
 .js .friend-item.reveal {
   transition:
-    opacity 650ms var(--ease-out) var(--friend-delay, 0ms),
-    transform 900ms var(--ease-out) var(--friend-delay, 0ms),
+    opacity 380ms var(--ease-out) var(--friend-delay, 0ms),
+    transform 560ms var(--ease-out) var(--friend-delay, 0ms),
     padding 360ms var(--ease-out) 0ms,
     background 280ms var(--ease-standard) 0ms,
     border-color 280ms var(--ease-standard) 0ms;
-  transform: translateX(-20px);
+  transform: translateX(-16px);
 }
-.js .friend-item.reveal[data-delay="1"] { --friend-delay: 80ms; }
-.js .friend-item.reveal[data-delay="2"] { --friend-delay: 190ms; }
-.js .friend-item.reveal[data-delay="3"] { --friend-delay: 300ms; }
-.js .friend-item.reveal[data-delay="4"] { --friend-delay: 410ms; }
-.js .friend-item.reveal[data-delay="5"] { --friend-delay: 520ms; }
-.js .friend-item.reveal[data-delay="6"] { --friend-delay: 630ms; }
-.js .friend-item.reveal[data-delay="7"] { --friend-delay: 740ms; }
-.js .friend-item.reveal[data-delay="8"] { --friend-delay: 850ms; }
-.js .friend-item.reveal[data-delay="9"] { --friend-delay: 960ms; }
-.js .friend-item.reveal[data-delay="10"] { --friend-delay: 1070ms; }
-.js .friend-item.reveal[data-delay="11"] { --friend-delay: 1180ms; }
-.js .friend-item.reveal[data-delay="12"] { --friend-delay: 1290ms; }
-.js .friend-item.reveal[data-delay="13"] { --friend-delay: 1400ms; }
-.js .friend-item.reveal[data-delay="14"] { --friend-delay: 1510ms; }
-.js .friend-item.reveal[data-delay="15"] { --friend-delay: 1620ms; }
-.js .friend-item.reveal[data-delay="16"] { --friend-delay: 1730ms; }
+.js .friend-item.reveal[data-delay="1"] { --friend-delay: 5ms; }
+.js .friend-item.reveal[data-delay="2"] { --friend-delay: 55ms; }
+.js .friend-item.reveal[data-delay="3"] { --friend-delay: 105ms; }
+.js .friend-item.reveal[data-delay="4"] { --friend-delay: 155ms; }
+.js .friend-item.reveal[data-delay="5"] { --friend-delay: 205ms; }
+.js .friend-item.reveal[data-delay="6"] { --friend-delay: 255ms; }
+.js .friend-item.reveal[data-delay="7"] { --friend-delay: 305ms; }
+.js .friend-item.reveal[data-delay="8"] { --friend-delay: 355ms; }
+.js .friend-item.reveal[data-delay="9"] { --friend-delay: 405ms; }
+.js .friend-item.reveal[data-delay="10"] { --friend-delay: 455ms; }
+.js .friend-item.reveal[data-delay="11"] { --friend-delay: 505ms; }
+.js .friend-item.reveal[data-delay="12"] { --friend-delay: 555ms; }
+.js .friend-item.reveal[data-delay="13"] { --friend-delay: 605ms; }
+.js .friend-item.reveal[data-delay="14"] { --friend-delay: 655ms; }
+.js .friend-item.reveal[data-delay="15"] { --friend-delay: 705ms; }
+.js .friend-item.reveal[data-delay="16"] { --friend-delay: 755ms; }
+.js .friend-item.reveal[data-delay="17"] { --friend-delay: 805ms; }
 .js .friend-item.reveal.is-visible {
   transform: translateX(0);
-  animation: friend-row-in 900ms var(--ease-out) var(--friend-delay) both;
+  animation: friend-row-in 520ms var(--ease-out) var(--friend-delay) both;
 }
 @keyframes friend-row-in {
   from { opacity: 0; transform: translateX(-20px); clip-path: inset(0 100% 0 0); }
