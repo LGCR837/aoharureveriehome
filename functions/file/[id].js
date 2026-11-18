@@ -214,8 +214,8 @@ const page = ({ title, description, content, status = 200 }) => new Response(`<!
 
   <div class="file-page">
     <header class="file-topbar">
-      <a class="wordmark" href="/" aria-label="Aoharu Reverie，返回首页">
-        <span>AOHARU</span><span>REVERIE</span>
+      <a class="wordmark" href="/" aria-label="LP Azusa，返回首页">
+        <span>LP</span><span>AZUSA</span>
       </a>
       <span class="file-topbar__service">FILE GATEWAY / PAN.MOE</span>
       <nav class="file-topbar__nav" aria-label="页面导航">
@@ -228,7 +228,7 @@ const page = ({ title, description, content, status = 200 }) => new Response(`<!
     ${content}
 
     <footer class="file-footer">
-      <p>© 2026 Aoharu Reverie</p>
+      <p>© 2026 LP Azusa</p>
       <p>文件解析服务 · 内容存放于萌盘</p>
     </footer>
   </div>
@@ -257,7 +257,7 @@ const errorMessages = {
 };
 
 const errorPage = (status, detail) => page({
-  title: `${status} | Aoharu File Gateway`,
+  title: `${status} | Azusa File Gateway`,
   description: "文件分享解析失败。",
   status,
   content: `<main class="file-main">
@@ -275,7 +275,7 @@ const errorPage = (status, detail) => page({
 });
 
 const passwordPage = (key, message = "") => page({
-  title: "需要访问密码 | Aoharu File Gateway",
+  title: "需要访问密码 | Azusa File Gateway",
   description: "这个萌盘分享受密码保护。",
   content: `<main class="file-main">
     <section class="file-card file-card--locked">
@@ -299,7 +299,7 @@ const passwordPage = (key, message = "") => page({
     <aside class="file-aside">
       <section class="file-side-card">
         <p class="file-label">ABOUT THIS GATEWAY</p>
-        <p>这是 Aoharu Reverie 提供的萌盘分享解析入口。本站不保存文件，只负责生成临时下载地址。</p>
+        <p>这是 LP Azusa 提供的萌盘分享解析入口。本站不保存文件，只负责生成临时下载地址。</p>
       </section>
       <section class="file-side-card">
         <p class="file-label">SHARE KEY</p>
@@ -330,8 +330,8 @@ const filePage = (key, info, password) => {
   ];
 
   return page({
-    title: `${details.name} | Aoharu File Gateway`,
-    description: `下载 ${details.name}，文件由萌盘分享并通过 Aoharu Reverie 解析。`,
+    title: `${details.name} | Azusa File Gateway`,
+    description: `下载 ${details.name}，文件由萌盘分享并通过 LP Azusa 解析。`,
     content: `<main class="file-main">
       <section class="file-card">
         <div class="file-card__top">
@@ -371,7 +371,7 @@ const filePage = (key, info, password) => {
           <p class="file-key">${escapeHtml(info.key || key)}</p>
         </section>
         <section class="file-side-card file-side-card--accent">
-          <p class="file-label">AOHARU / FILE</p>
+          <p class="file-label">AZUSA / FILE</p>
           <p>一个安静的文件中转页。</p>
           <a href="/">回到主页 <span aria-hidden="true">↗</span></a>
         </section>

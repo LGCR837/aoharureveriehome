@@ -248,7 +248,7 @@ function renderBlogIndex(posts) {
   return `
     <div class="blog-shell blog-index">
       <header class="blog-index__hero reveal">
-        <p class="blog-kicker"><span class="square-mark"></span> AOHARU / WRITING</p>
+        <p class="blog-kicker"><span class="square-mark"></span> AZUSA / WRITING</p>
         <h1>文章<span>WRITING &amp; NOTES</span></h1>
         <p class="blog-index__deck">写一些关于开发、设计与日常的片段。没有固定的更新频率，只留下真正想写下来的内容。</p>
         <div class="blog-index__meta">
@@ -283,7 +283,7 @@ function renderPostPage(post, posts) {
       <div class="post-layout">
         <aside class="post-rail post-rail--left reveal" data-delay="1">
           <section class="rail-section">
-            <p class="rail-label">AOHARU / BLOG</p>
+            <p class="rail-label">AZUSA / BLOG</p>
             <p class="rail-note">记录开发、设计，以及一些不想忘记的片段。</p>
             <nav class="rail-nav" aria-label="博客导航">
               <a href="/">首页 <span>↗</span></a>
@@ -461,8 +461,8 @@ async function build() {
   );
 
   const blogIndexHtml = renderBlogTemplate(blogTemplate, {
-    PAGE_TITLE: "文章 | Aoharu Reverie",
-    PAGE_DESCRIPTION: "Aoharu Reverie 的文章归档，记录开发、设计与日常。",
+    PAGE_TITLE: "文章 | LP Azusa",
+    PAGE_DESCRIPTION: "LP Azusa 的文章归档，记录开发、设计与日常。",
     CANONICAL_URL: "https://aoharu.vc.ci/blog/",
     OG_TYPE: "website",
     ARTICLE_META: "",
@@ -486,7 +486,7 @@ async function build() {
       dateModified: isoDate(post.updated),
       url: `https://aoharu.vc.ci/blog/${post.slug}/`,
       image: "https://aoharu.vc.ci/assets/hoshino-wallpaper-3840.webp",
-      author: { "@type": "Person", name: "Aoharu Reverie" }
+      author: { "@type": "Person", name: "LP Azusa" }
     }).replaceAll("<", "\\u003c");
 
     const articleMeta = [
@@ -496,7 +496,7 @@ async function build() {
     ].join("\n  ");
 
     const postHtml = renderBlogTemplate(blogTemplate, {
-      PAGE_TITLE: escapeHtml(`${post.title} | Aoharu Reverie`),
+      PAGE_TITLE: escapeHtml(`${post.title} | LP Azusa`),
       PAGE_DESCRIPTION: escapeHtml(post.summary),
       CANONICAL_URL: `https://aoharu.vc.ci/blog/${post.slug}/`,
       OG_TYPE: "article",

@@ -2,7 +2,7 @@
   "name": "aoharu-reverie-home",
   "version": "1.0.0",
   "private": true,
-  "description": "Aoharu Reverie personal homepage",
+  "description": "LP Azusa personal homepage",
   "scripts": {
     "build": "node scripts/build.cjs"
   },
