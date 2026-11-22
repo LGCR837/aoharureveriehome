@@ -485,7 +485,7 @@ async function build() {
       datePublished: isoDate(post.date),
       dateModified: isoDate(post.updated),
       url: `https://aoharu.vc.ci/blog/${post.slug}/`,
-      image: "https://aoharu.vc.ci/assets/hoshino-wallpaper-3840.webp",
+      image: "https://aoharu.vc.ci/assets/azusa-wallpaper-3610.webp",
       author: { "@type": "Person", name: "LP Azusa" }
     }).replaceAll("<", "\\u003c");
 

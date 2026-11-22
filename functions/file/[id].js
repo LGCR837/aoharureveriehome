@@ -203,10 +203,10 @@ const page = ({ title, description, content, status = 200 }) => new Response(`<!
   <div class="site-background" aria-hidden="true">
     <div class="site-background__drift">
       <picture class="site-background__picture">
-        <source media="(max-width: 760px)" srcset="/assets/hoshino-wallpaper-1280.webp">
-        <source media="(max-width: 1920px)" srcset="/assets/hoshino-wallpaper-1920.webp">
-        <source media="(max-width: 2560px)" srcset="/assets/hoshino-wallpaper-2560.webp">
-        <img class="site-background__image" src="/assets/hoshino-wallpaper-3840.webp" alt="" fetchpriority="high">
+        <source media="(max-width: 760px)" srcset="/assets/azusa-wallpaper-1280.webp">
+        <source media="(max-width: 1920px)" srcset="/assets/azusa-wallpaper-1920.webp">
+        <source media="(max-width: 2560px)" srcset="/assets/azusa-wallpaper-2560.webp">
+        <img class="site-background__image" src="/assets/azusa-wallpaper-3610.webp" alt="" fetchpriority="high">
       </picture>
     </div>
     <div class="site-background__shade"></div>

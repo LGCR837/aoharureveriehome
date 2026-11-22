@@ -107,7 +107,7 @@ npm ci && npm run build
 
 ## 图片
 
-![小鸟游星野壁纸测试图](/assets/hoshino-wallpaper-1280.webp)
+![背景壁纸测试图](/assets/azusa-wallpaper-1280.webp)
 
 *图片宽度会被限制在正文区域内，并保留原始比例。*
 
